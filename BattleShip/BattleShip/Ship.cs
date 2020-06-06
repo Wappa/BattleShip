@@ -29,7 +29,7 @@ namespace BattleShip
 
         public Types Type => type;
 
-        public uint Lenght => length;
+        public uint Length => length;
 
         public Directions Direction => direction;
 
