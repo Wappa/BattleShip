@@ -57,7 +57,7 @@ namespace BattleShip
                 default:
                     throw new ArgumentException("Type is Incorrect");
             }
-            tuchee = (bool[]) new bool[length].Select(brick => false);
+            tuchee = (bool[]) new bool[length];
         }
 
         public int Life => tuchee.Count(brick => !brick);
