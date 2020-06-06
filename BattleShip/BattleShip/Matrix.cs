@@ -14,6 +14,8 @@ namespace BattleShip
             nbDestroyer = 0;
             bool invalidDes = false;
             bool invalidCru = false;
+            bool invalidDick = false;
+            bool invalidSub = false;
             
             matrice = new Ship[lenMat,lenMat];
             while (nbDestroyer < 1 || invalidDes == false)
@@ -24,7 +26,7 @@ namespace BattleShip
                 Console.WriteLine("Entrez la Seconde coordonnée (Un chiffre entre 1 et 8)");
                 string SCoor = Console.ReadLine();
                 int SeCoor = Convert.ToInt32(SCoor);
-                if ((UnCoor >1 && UnCoor<8 ) && (SeCoor >1 && SeCoor <8) )
+                if ((UnCoor >=1 && UnCoor<=8 ) && (SeCoor >=1 && SeCoor <=8) )
                 {
                     invalidDes = true;
                     nbDestroyer += 1;
@@ -55,7 +57,7 @@ namespace BattleShip
                 Console.WriteLine("Entrez la Seconde coordonnée (Un chiffre entre 1 et 8)");
                 string SCoor = Console.ReadLine();
                 int SeCoor = Convert.ToInt32(SCoor);
-                if ((UnCoor > 1 && UnCoor < 8) && (SeCoor > 1 && SeCoor < 8))
+                if ((UnCoor >= 1 && UnCoor <= 8) && (SeCoor >= 1 && SeCoor <= 8))
                 {
                     invalidCru = true;
                     nbCruiser += 1;
@@ -80,6 +82,73 @@ namespace BattleShip
                         break;
                 }
             }
+            while (nbMinidick < 1 || invalidDick == false)
+            {
+                Console.WriteLine("Entrez la premièere coordonnée (Un chiffre entre 1 et 8)");
+                string UCoor = Console.ReadLine();
+                int UnCoor = Convert.ToInt32(UCoor);
+                Console.WriteLine("Entrez la Seconde coordonnée (Un chiffre entre 1 et 8)");
+                string SCoor = Console.ReadLine();
+                int SeCoor = Convert.ToInt32(SCoor);
+                if ((UnCoor >= 1 && UnCoor <= 8) && (SeCoor >= 1 && SeCoor <= 8))
+                {
+                    invalidDick = true;
+                    nbMinidick += 1;
+                }
+
+                Console.WriteLine(
+                    "Coordonnée valide, Choisissez la direction de votre bateau \n 0 = North , 1 = South , 2 = West and 3= East ");
+                string Direction = Console.ReadLine();
+                switch (Direction)
+                {
+                    case "0":
+                        matrice[UnCoor, SeCoor] = new Ship(Ship.Types.MINIDICK, Ship.Directions.NORTH);
+                        break;
+                    case "1":
+                        matrice[UnCoor, SeCoor] = new Ship(Ship.Types.MINIDICK, Ship.Directions.SOUTH);
+                        break;
+                    case "2":
+                        matrice[UnCoor, SeCoor] = new Ship(Ship.Types.MINIDICK, Ship.Directions.WEST);
+                        break;
+                    case "3":
+                        matrice[UnCoor, SeCoor] = new Ship(Ship.Types.MINIDICK, Ship.Directions.EAST);
+                        break;
+                }
+            }
+            while (nbSubmarine < 1 || invalidSub == false)
+            {
+                Console.WriteLine("Entrez la premièere coordonnée (Un chiffre entre 1 et 8)");
+                string UCoor = Console.ReadLine();
+                int UnCoor = Convert.ToInt32(UCoor);
+                Console.WriteLine("Entrez la Seconde coordonnée (Un chiffre entre 1 et 8)");
+                string SCoor = Console.ReadLine();
+                int SeCoor = Convert.ToInt32(SCoor);
+                if ((UnCoor >= 1 && UnCoor <= 8) && (SeCoor >= 1 && SeCoor <= 8))
+                {
+                    invalidSub = true;
+                    nbSubmarine += 1;
+                }
+
+                Console.WriteLine(
+                    "Coordonnée valide, Choisissez la direction de votre bateau \n 0 = North , 1 = South , 2 = West and 3= East ");
+                string Direction = Console.ReadLine();
+                switch (Direction)
+                {
+                    case "0":
+                        matrice[UnCoor, SeCoor] = new Ship(Ship.Types.SUBMARINE, Ship.Directions.NORTH);
+                        break;
+                    case "1":
+                        matrice[UnCoor, SeCoor] = new Ship(Ship.Types.SUBMARINE, Ship.Directions.SOUTH);
+                        break;
+                    case "2":
+                        matrice[UnCoor, SeCoor] = new Ship(Ship.Types.SUBMARINE, Ship.Directions.WEST);
+                        break;
+                    case "3":
+                        matrice[UnCoor, SeCoor] = new Ship(Ship.Types.SUBMARINE, Ship.Directions.EAST);
+                        break;
+                }
+            }
+            Console.WriteLine(matrice);
         }
     }
 }

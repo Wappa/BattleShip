@@ -6,7 +6,7 @@ namespace BattleShip
     {
         static void Main(string[] args)
         {
-            
+            Matrix game = new Matrix(1,1,1,1,8);
         }
     }
 }
